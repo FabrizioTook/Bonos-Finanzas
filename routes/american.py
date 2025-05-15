@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel
 from typing import List, Optional
-from datetime import date
+from datetime import datetime
 from firebase_config import firebase_init
 
 router = APIRouter()
@@ -13,7 +13,7 @@ class FinanceInput(BaseModel):
     userId: str
     precio_venta: float
     cuota_inicial: float
-    fecha_emision: date
+    fecha_emision: datetime
     numero_anios: int
     tasa_interes: float
     tasa_descuento: float
