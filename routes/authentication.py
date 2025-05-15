@@ -22,7 +22,7 @@ class LoginModel(BaseModel):
 @router.post("/register", response_model=dict)
 async def register(user: UserModel):
     try:
-        if db.collection("users").where(filter=("email", "==", user.email)).limit(1).get():
+        if db.collection("users").where("email", "==", user.email).limit(1).get():
             raise HTTPException(status_code=400, detail="Ya existe un usuario con este email.")
 
         user_record = auth.create_user_with_email_and_password(
